@@ -24,7 +24,7 @@ import { Animal } from './animal.model';
       </div>
     </div>
     <button (click)="showNewForm()">Add New Animal</button>
-    <new-animal *ngIf="animalForm === true" (AnimalSender)="new-animal($event)" (hideForm)="cancel()"></new-animal>
+    <new-animal *ngIf="animalForm === true" (animalSender)="newAnimal($event)"></new-animal>
 
   </div>
   `
@@ -47,5 +47,10 @@ export class AppComponent {
   ];
   showNewForm() {
     this.animalForm = true;
+  }
+
+  newAnimal(newAnimal) {
+    this.animalForm = false;
+    this.masterAnimals.push(newAnimal)
   }
 }

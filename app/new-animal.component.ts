@@ -35,8 +35,8 @@ import { Animal } from './animal.model';
     <input #newLike><br>
     <label>Dislike:</label>
     <input #newDislike><br>
-    <label>Picture:</label>
-    <input #newPicture><br>
+    <label>Picture (urls only please!):</label>
+    <input type="url" #newPicture><br>
     <button (click)="submitForm(
       newSpecies.value,
       newName.value,
@@ -64,7 +64,6 @@ import { Animal } from './animal.model';
 
 export class NewAnimalComponent {
   @Output() animalSender = new EventEmitter();
-  @Output() hideForm = new EventEmitter();
 
   submitForm(species: string, name: string, age: number, diet: string, location: string, caretakers: number, sex: string, like: string, dislike: string, picture: string) {
     var newAnimal: Animal = new Animal(species, name, age, diet, location, caretakers, sex, like, dislike, picture);
