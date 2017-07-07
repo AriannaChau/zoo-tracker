@@ -14,8 +14,9 @@ import { Animal } from './animal.model';
       <img id="border" src="/../resources/images/border-right.png">
     </div>
     <div id="animal-container">
-      <div class="animals" (click)="selectedAnimalDetails(currentAnimal)" *ngFor="let currentAnimal of masterAnimals">
+      <div class="animals" *ngFor="let currentAnimal of masterAnimals">
         <div id="info">
+          <button (click)="editAnimal(currentAnimal)">Edit</button>
           <h3>{{currentAnimal.name}}</h3>
           Species: {{currentAnimal.species}}<br>
           Age: {{currentAnimal.age}} y/o
@@ -25,6 +26,7 @@ import { Animal } from './animal.model';
     </div>
     <button (click)="showNewForm()">Add New Animal</button>
     <new-animal *ngIf="animalForm === true" (animalSender)="newAnimal($event)"></new-animal>
+    <edit-animal *ngIf="updateForm === true" [editAnimal]="selectedAnimal" (updateSender)="finishEdit()"> </edit-animal>
 
   </div>
   `
@@ -32,6 +34,7 @@ import { Animal } from './animal.model';
 
 export class AppComponent {
   animalForm: boolean = false;
+  updateForm: boolean = false;
   animalDetails = null;
   selectedAnimal = null;
   filterAnimals: string = "allAnimals";
@@ -52,5 +55,14 @@ export class AppComponent {
   newAnimal(newAnimal) {
     this.animalForm = false;
     this.masterAnimals.push(newAnimal)
+  }
+
+  editAnimal(animalForEdit) {
+    this.updateForm = true;
+    this.selectedAnimal = animalForEdit;
+  }
+
+  finishEdit() {
+    this.updateForm = false;
   }
 }
