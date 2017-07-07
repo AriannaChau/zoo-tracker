@@ -6,18 +6,30 @@ import { Animal } from './animal.model';
   template:
   `<div class="container">
     <div id="header">
-      <h1>Zoo Tracker</h1>
+      <h1 (click)="speakTitle()">Zoo Tracker</h1>
       <img src="/../resources/images/bamboobottom.png">
     </div>
     <div id="hero">
       <img id="bamboo" src="/../resources/images/bamboo.png">
       <img id="border" src="/../resources/images/border-right.png">
     </div>
+    <div id="select">
+      <select (change)="onChange($event.target.value)">
+      <option value="allAnimals" selected="selected">All Animals</option>
+      <option value="babies">Babies</option>
+      <option value="oldies">Oldies but Goodies</option>
+      </select>
+    </div>
     <div id="animal-container">
-      <div class="animals" *ngFor="let currentAnimal of masterAnimals">
+      <div class="animals" *ngFor="let currentAnimal of masterAnimals | sortByAge:filterAnimals">
         <div id="info">
-          <button (click)="editAnimal(currentAnimal)">Edit</button>
-          <h3>{{currentAnimal.name}}</h3>
+          <div id="name-edit">
+            <h3>{{currentAnimal.name}}</h3>
+            <div>
+            <button class="edit" (click)="editAnimal(currentAnimal)">Edit</button>
+            <button class="voice" (click)="speak(currentAnimal)"><img src="/../resources/images/megaphone.png"></button>
+            </div>
+          </div>
           Species: {{currentAnimal.species}}<br>
           Age: {{currentAnimal.age}} y/o
           <img class="animalpic" src="{{currentAnimal.picture}}"/>
@@ -25,9 +37,10 @@ import { Animal } from './animal.model';
       </div>
     </div>
     <button (click)="showNewForm()">Add New Animal</button>
-    <new-animal *ngIf="animalForm === true" (animalSender)="newAnimal($event)"></new-animal>
-    <edit-animal *ngIf="updateForm === true" [editAnimal]="selectedAnimal" (updateSender)="finishEdit()"> </edit-animal>
-
+    <div id="footer" *ngIf="updateForm === true || animalForm === true">
+      <new-animal *ngIf="animalForm === true" (animalSender)="newAnimal($event)"></new-animal>
+      <edit-animal *ngIf="updateForm === true" [editAnimal]="selectedAnimal" (updateSender)="finishEdit()"> </edit-animal>
+    </div>
   </div>
   `
 })
@@ -38,7 +51,6 @@ export class AppComponent {
   animalDetails = null;
   selectedAnimal = null;
   filterAnimals: string = "allAnimals";
-  filterLocations: string = "allLocations";
 
   masterAnimals: Animal[] = [
     new Animal('Fennec Fox', 'Opal', 3, 'Plants, Rodents, Insects', 'Desert', 3, 'Female', 'Frantically running around exhibit', 'Being cold', './../resources/images/fennec.jpg'),
@@ -65,4 +77,16 @@ export class AppComponent {
   finishEdit() {
     this.updateForm = false;
   }
+
+  onChange(menuOption) {
+    this.filterAnimals = menuOption;
+  }
+  // 
+  // speakTitle() {
+  //   responsiveVoice.speak("Welcome to the Zoo Tracker! I'm here to assist you if you have trouble reading!", "US English Female");
+  // }
+  //
+  // speak(animal) {
+  //   responsiveVoice.speak("This is " + animal.name + ". The " + animal.sex + " " + animal.species, "US English Female");
+  // }
 }

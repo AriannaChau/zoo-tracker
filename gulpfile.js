@@ -86,7 +86,7 @@ gulp.task('cssBuild', ['sassBuild'], function(){
   browserSync.reload();
 });
 
-gulp.task('tsBuild', ['ts'], function(){
+gulp.task('tsBuild', ['tsClean'], function(){
   browserSync.reload();
 });
 

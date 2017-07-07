@@ -13,10 +13,10 @@ body {
 
 #header {
   background-image: url(/../resources/images/bg-header.png);
-  background-size: contain;
+  background-size: auto;
   background-repeat: no-repeat;
   background-position: center;
-  min-width: 1000px;
+  min-width: 1050px;
   height: 175px;
   display: flex;
   justify-content: center;
@@ -24,12 +24,14 @@ body {
   position: relative;
   h1 {
     font-family: Short Stack;
-    font-size: 60px;
+    font-size: 5em;
+    color: green;
+    text-shadow: 2px 2px 2px orange;
  }
  img {
    position: absolute;
-   bottom: -30px;
-   width: 850px;
+   bottom: -40px;
+   width: 1050px;
  }
 }
 
@@ -38,7 +40,7 @@ body {
   background-size: cover;
   background-position: top;
   background-repeat: no-repeat;
-  width: 800px;
+  width: 1000px;
   height: 550px;
   position: relative;
   z-index: -1;
@@ -46,8 +48,8 @@ body {
   #bamboo  {
     position: absolute;
     left: -10;
-    bottom: -100;
-    width: 820px;
+    bottom: -120;
+    width: 1020px;
   }
   #border {
     height: 549px;
@@ -79,7 +81,30 @@ body {
     flex-direction: column;
     justify-content: center;
     margin-left: 30px;
-    margin-top: 20px;
+    // margin-top: 20px;
+    #name-edit {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+
+      .edit {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #54a1e7;
+        font-size: 12px;
+        border: none;
+        margin-right: 30px;
+        margin-top: 20px;
+      }
+      .voice {
+        width: 40px;
+        height: 40px;
+        img {
+          width: 100%;
+        }
+      }
+    }
   }
 
   .animalpic {
@@ -88,4 +113,26 @@ body {
     align-self: flex-end;
     margin-right: 35px;
   }
+
+}
+
+#footer {
+  margin: 0 auto;
+  background-image: url(/../resources/images/bg-footer.png);
+  height: 400px;
+  width: 85%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+#select {
+margin-top: 70px;
+display: flex;
+justify-content: center;
+select {
+  width: 70%;
+  height: 70px;
+  font-size: 16px;
+}
 }
