@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css?family=Short+Stack');
+
+
+body {
+  background-image: url(/../resources/images/background.jpeg);
+  background-color: #d5f4f9;
+  background-position: bottom;
+  background-size: contain;
+  background-repeat: repeat-y;
+  display: flex;
+  justify-content: center;
+}
+// .container {
+//   display: flex;
+//   flex-wrap: wrap;
+//   justify-content: center;
+//   align-items: center;
+// }
+
+#header {
+  background-image: url(/../resources/images/bg-header.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-width: 1000px;
+  height: 175px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  h1 {
+    font-family: Short Stack;
+    font-size: 60px;
+ }
+ img {
+   position: absolute;
+   bottom: -30px;
+   width: 850px;
+ }
+}
+
+#hero {
+  background-image: url(/../resources/images/hero.jpg);
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+  width: 800px;
+  height: 550px;
+  position: relative;
+  z-index: -1;
+  margin: 0 auto;
+  #bamboo  {
+    position: absolute;
+    left: -10;
+    bottom: -100;
+    width: 820px;
+  }
+  #border {
+    height: 549px;
+    position: absolute;
+    left: -25;
+  }
+}
+
+#animal-container {
+  margin-top: 80px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.animals {
+  background-image: url(/../resources/images/animals-bg.png);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 300px;
+  width: 400px;
+  margin: 5px;
+
+  #info {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 30px;
+    margin-top: 20px;
+  }
+
+  .animalpic {
+    width: 55%;
+    border-radius: 10px;
+    align-self: center;
+  }
+}
