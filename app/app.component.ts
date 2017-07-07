@@ -25,9 +25,9 @@ import { Animal } from './animal.model';
         <div id="info">
           <div id="name-edit">
             <h3>{{currentAnimal.name}}</h3>
-            <div>
-            <button class="edit" (click)="editAnimal(currentAnimal)">Edit</button>
-            <button class="voice" (click)="speak(currentAnimal)"><img src="/../resources/images/megaphone.png"></button>
+            <div id="buttons">
+              <button class="edit" (click)="editAnimal(currentAnimal)">Edit</button>
+              <button class="voice" (click)="speak(currentAnimal)"><img src="/../resources/images/megaphone.png"></button>
             </div>
           </div>
           Species: {{currentAnimal.species}}<br>
@@ -81,7 +81,7 @@ export class AppComponent {
   onChange(menuOption) {
     this.filterAnimals = menuOption;
   }
-  // 
+  //
   // speakTitle() {
   //   responsiveVoice.speak("Welcome to the Zoo Tracker! I'm here to assist you if you have trouble reading!", "US English Female");
   // }
