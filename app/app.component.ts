@@ -1,12 +1,13 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Animal } from './animal.model';
-
+import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
 @Component({
   selector: 'app-root',
   template:
-  `<div class="container">
+  `
+  <div class="container">
     <div id="header">
-      <h1 (click)="speakTitle()">Zoo Tracker</h1>
+      <h1 onClick='responsiveVoice.speak("Welcome to the Zoo Tracker! I am here to assist you if you have trouble reading!", "US English Female");'>Zoo Tracker</h1>
       <img src="/../resources/images/bamboobottom.png">
     </div>
     <div id="hero">
@@ -27,7 +28,7 @@ import { Animal } from './animal.model';
             <h3>{{currentAnimal.name}}</h3>
             <div id="buttons">
               <button class="edit" (click)="editAnimal(currentAnimal)">Edit</button>
-              <button class="voice" (click)="speak(currentAnimal)"><img src="/../resources/images/megaphone.png"></button>
+              <span [innerHTML]="html"></span>
             </div>
           </div>
           Species: {{currentAnimal.species}}<br>
@@ -38,8 +39,12 @@ import { Animal } from './animal.model';
     </div>
     <button (click)="showNewForm()">Add New Animal</button>
     <div id="footer" *ngIf="updateForm === true || animalForm === true">
-      <new-animal *ngIf="animalForm === true" (animalSender)="newAnimal($event)"></new-animal>
-      <edit-animal *ngIf="updateForm === true" [editAnimal]="selectedAnimal" (updateSender)="finishEdit()"> </edit-animal>
+      <div id="new">
+        <new-animal *ngIf="animalForm === true" (animalSender)="newAnimal($event)"></new-animal>
+      </div>
+      <div id="edit">
+        <edit-animal *ngIf="updateForm === true" [editAnimal]="selectedAnimal" (updateSender)="finishEdit()"> </edit-animal>
+      </div>
     </div>
   </div>
   `
@@ -51,6 +56,11 @@ export class AppComponent {
   animalDetails = null;
   selectedAnimal = null;
   filterAnimals: string = "allAnimals";
+  html = null;
+
+  constructor(private sanitizer: DomSanitizer) {
+  this.html = sanitizer.bypassSecurityTrustHtml('<button class="voice" onClick=\"responsiveVoice.speak("This is " + {{currentAnimal.name}} + ". The " + {{currentAnimal.sex}} + " " + {{currentAnimal.species}}, "US English Female");\"><img src="/../resources/images/megaphone.png"></button>');
+  }
 
   masterAnimals: Animal[] = [
     new Animal('Fennec Fox', 'Opal', 3, 'Plants, Rodents, Insects', 'Desert', 3, 'Female', 'Frantically running around exhibit', 'Being cold', './../resources/images/fennec.jpg'),
@@ -81,11 +91,11 @@ export class AppComponent {
   onChange(menuOption) {
     this.filterAnimals = menuOption;
   }
-  //
+
   // speakTitle() {
   //   responsiveVoice.speak("Welcome to the Zoo Tracker! I'm here to assist you if you have trouble reading!", "US English Female");
   // }
-  //
+
   // speak(animal) {
   //   responsiveVoice.speak("This is " + animal.name + ". The " + animal.sex + " " + animal.species, "US English Female");
   // }

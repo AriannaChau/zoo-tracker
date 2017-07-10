@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Short+Stack');
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
 
 
 body {
@@ -9,6 +11,7 @@ body {
   background-repeat: repeat-y;
   display: flex;
   justify-content: center;
+  font-family: Lato;
 }
 
 #header {
@@ -81,7 +84,6 @@ body {
     flex-direction: column;
     justify-content: center;
     margin-left: 30px;
-    // margin-top: 20px;
     #name-edit {
       display: flex;
       justify-content: space-between;
@@ -125,12 +127,58 @@ body {
 
 #footer {
   margin: 0 auto;
-  background-image: url(/../resources/images/bg-footer.png);
-  height: 400px;
   width: 85%;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+  display: flex;
+  justify-content: space-around;
+
+  #new {
+    background-color: lightblue;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    input {
+      width: 600px;
+      margin-bottom: 10px;
+      height: 30px;
+      font-size: 12px;
+      border-radius: 5px;
+      border: 1px solid black;
+      margin-top: 3px;
+    }
+    select {
+      width: 300px;
+      margin-bottom: 10px;
+      font-size: 16px;
+      height: 30px;
+      border-radius: 5px;
+      border: 1px solid black;
+      margin-top: 3px;
+    }
+  }
+  #edit {
+    background-color: #d5f4f9;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    input {
+      width: 600px;
+      margin-bottom: 10px;
+      height: 30px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid black;
+      margin-top: 3px;
+    }
+    select {
+      width: 300px;
+      margin-bottom: 10px;
+      font-size: 16px;
+      height: 30px;
+      border-radius: 5px;
+      border: 1px solid black;
+      margin-top: 3px;
+    }
+  }
 }
 
 #select {
@@ -138,8 +186,11 @@ margin-top: 70px;
 display: flex;
 justify-content: center;
 select {
-  width: 70%;
+  width: 40%;
   height: 70px;
   font-size: 16px;
+  background-color: #074770;
+  opacity: .8;
+  color: white;
 }
 }

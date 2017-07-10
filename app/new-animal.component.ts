@@ -6,16 +6,16 @@ import { Animal } from './animal.model';
   template: `
     <h2>New Animal</h2>
     <div>
-    <label>Species:</label>
+    <label>Species:</label><br>
     <input #newSpecies><br>
-    <label>Name:</label>
+    <label>Name:</label><br>
     <input #newName><br>
-    <label>Age:</label>
+    <label>Age:</label><br>
     <input type="number" #newAge><br>
-    <label>Diet:</label>
+    <label>Diet:</label><br>
     <input #newDiet><br>
-    <label>Location:</label>
-    <select #newLocation>
+    <label>Location:</label><br>
+    <select #newLocation><br>
       <option value="Desert" selected>Desert</option>
       <option value="Riverside">Riverside</option>
       <option value="Rainforest">Rainforest</option>
@@ -23,18 +23,18 @@ import { Animal } from './animal.model';
       <option value="Arctic">Arctic</option>
       <option value="Other">Other</option>
     </select><br>
-    <label>Number of Caretakers:</label>
+    <label>Number of Caretakers:</label><br>
     <input type="number" #newCaretakers><br>
-    <label>Sex:</label>
+    <label>Sex:</label><br>
     <select #newSex>
       <option value="Female" selected>Female</option>
       <option value="Male">Male</option>
     </select><br>
-    <label>Like:</label>
+    <label>Like:</label><br>
     <input #newLike><br>
-    <label>Dislike:</label>
+    <label>Dislike:</label><br>
     <input #newDislike><br>
-    <label>Picture (urls only please!):</label>
+    <label>Picture (urls only please!):</label><br>
     <input type="url" #newPicture><br>
     <button (click)="submitForm(
       newSpecies.value,

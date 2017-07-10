@@ -5,14 +5,13 @@ import { Animal } from './animal.model';
   selector: 'edit-animal',
   template: `
   <div *ngIf="editAnimal">
-      <hr>
       <h3>Edit {{editAnimal.name}}:</h3>
       <div>
-        <label>Update Name:</label>
+        <label>Update Name:</label><br>
         <input [(ngModel)]="editAnimal.name"><br>
-        <label>Update Age:</label>
+        <label>Update Age:</label><br>
         <input type="number" [(ngModel)]="editAnimal.age"><br>
-        <label>Update Number of Caretakers:</label>
+        <label>Update Number of Caretakers:</label><br>
         <input type="number" [(ngModel)]="editAnimal.caretakers"><br>
         <button (click)="updateClicked()">Update Changes</button>
       </div>
